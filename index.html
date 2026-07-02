@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============ SEO & PERSONAL BRANDING ============ -->
+  <title>Hajar Elkamouni | Data Analyst & Data Engineer | SQL, Python, PySpark, Power BI</title>
+  <meta name="description" content="Data Analyst & Data Engineer specialized in ETL/ELT pipelines, BI automation and machine learning for the payments industry. I turn complex data into reliable KPIs, interactive dashboards and decisions." />
+  <meta name="keywords" content="Data Analyst, Data Engineer, Data Science, Business Intelligence, Analytics Engineer, SQL, Python, PySpark, Apache Spark, Airflow, Power BI, ETL, Data Pipeline, Machine Learning, Deep Learning, Time Series Forecasting, Casablanca, Rabat, Morocco" />
+  <meta name="author" content="Hajar Elkamouni" />
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:title" content="Hajar Elkamouni | Data Analyst & Data Engineer" />
+  <meta property="og:description" content="I design data pipelines, automate BI reporting and build ML models that turn payment data into business decisions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mathtodata.com" />
+  <!-- Structured data: helps Google understand who you are -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hajar Elkamouni",
+    "jobTitle": "Data Analyst & Data Engineer",
+    "email": "mailto:elkamounihajar11@gmail.com",
+    "url": "https://mathtodata.com",
+    "sameAs": ["https://github.com/hajarelkmouni", "https://www.linkedin.com/in/hajar-elkamouni-34a67a21a/"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Casablanca", "addressCountry": "MA" },
+    "alumniOf": "ENSIAS, École Nationale Supérieure d'Informatique et d'Analyse des Systèmes",
+    "knowsAbout": ["Data Engineering", "Data Analysis", "Data Science", "Business Intelligence", "SQL", "Python", "PySpark", "Power BI", "Machine Learning", "Deep Learning"]
+  }
+  </script>
+
+  <!-- Favicon: inline SVG, gradient "H" with the cyan dot from the logo (no extra file needed) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%236d8bff'/%3E%3Cstop offset='1' stop-color='%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230d1424'/%3E%3Crect x='1.5' y='1.5' width='61' height='61' rx='12.5' fill='none' stroke='url(%23g)' stroke-opacity='.55' stroke-width='2'/%3E%3Ctext x='29' y='46' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='700' text-anchor='middle' fill='url(%23g)'%3EH%3C/text%3E%3Ccircle cx='47' cy='43' r='4.5' fill='%2322d3ee'/%3E%3C/svg%3E" />
+
+  <!-- Typography: Space Grotesk (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================================
+       DESIGN SYSTEM - premium dark theme with cyan→violet data accents
+       ================================================================ */
+    :root {
+      --bg: #060a14;            /* page background */
+      --bg-soft: #0a101f;       /* section alternation */
+      --surface: #0d1424;       /* cards */
+      --surface-2: #111a2e;     /* elevated cards */
+      --line: rgba(148, 163, 184, 0.14);
+      --text: #e6ecf7;
+      --text-soft: #9aa7bd;
+      --accent: #22d3ee;        /* cyan */
+      --accent-2: #6d8bff;      /* blue */
+      --accent-3: #a78bfa;      /* violet */
+      --green: #34d399;         /* "data green" for positive signals */
+      --grad: linear-gradient(100deg, #22d3ee 0%, #6d8bff 50%, #a78bfa 100%);
+      --radius: 16px;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-body: "Inter", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Subtle background grid - gives the "data" feel without noise */
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(148,163,184,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    ::selection { background: rgba(34, 211, 238, .25); }
+
+    .container { width: min(1140px, 92%); margin: 0 auto; position: relative; z-index: 1; }
+
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+
+    section { padding: 96px 0; }
+    .section-alt { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+    /* Section headers */
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .kicker::before { content: ""; width: 26px; height: 2px; background: var(--grad); border-radius: 2px; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 700; margin-bottom: 16px; }
+    .section-lede { color: var(--text-soft); max-width: 640px; margin-bottom: 48px; }
+
+    /* Scroll-reveal animation (elements get .visible via IntersectionObserver) */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Gradient text helper */
+    .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 12px;
+      font-family: var(--font-display); font-weight: 600; font-size: 15px;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn-primary { background: var(--grad); color: #04121b; box-shadow: 0 8px 28px rgba(34,211,238,.22); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(109,139,255,.32); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* Tag chips */
+    .tag {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      font-size: 13.5px; font-weight: 500; color: var(--text-soft);
+      background: rgba(148,163,184,.07); border: 1px solid var(--line);
+      transition: color .2s, border-color .2s, transform .2s;
+    }
+    .tag:hover { color: var(--accent); border-color: rgba(34,211,238,.45); transform: translateY(-1px); }
+
+    /* ================= NAVIGATION ================= */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(6,10,20,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { color: var(--text-soft); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta { display: inline-flex; padding: 9px 18px; font-size: 14px; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 6px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .25s, opacity .25s; }
+
+    /* ================= HERO ================= */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 0 90px; position: relative; }
+    /* soft radial glows behind the hero */
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(600px 380px at 18% 25%, rgba(34,211,238,.10), transparent 65%),
+        radial-gradient(560px 400px at 84% 70%, rgba(167,139,250,.10), transparent 65%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 7px 16px; border-radius: 999px; margin-bottom: 26px;
+      border: 1px solid var(--line); background: rgba(148,163,184,.06);
+      font-size: 13.5px; font-weight: 500; color: var(--text-soft);
+    }
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(52,211,153,.5); animation: pulse 2.2s infinite; }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(52,211,153,0); } 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); } }
+
+    .hero h1 { font-size: clamp(38px, 5.4vw, 62px); font-weight: 700; line-height: 1.08; margin-bottom: 22px; }
+    .hero-sub { color: var(--text-soft); font-size: 17.5px; max-width: 540px; margin-bottom: 34px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 44px; }
+
+    /* Fact chips under CTAs - real facts only, no invented metrics */
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 26px; }
+    .fact .fact-top { font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+    .fact .fact-sub { font-size: 13px; color: var(--text-soft); }
+
+    /* --- Hero visual: abstract analytics dashboard --- */
+    .hero-visual { position: relative; }
+    .dash-card {
+      background: linear-gradient(160deg, var(--surface-2), var(--surface));
+      border: 1px solid var(--line); border-radius: 20px;
+      padding: 22px; box-shadow: 0 30px 70px rgba(0,0,0,.45);
+      animation: floaty 7s ease-in-out infinite;
+    }
+    @keyframes floaty { 50% { transform: translateY(-10px); } }
+    .dash-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .dash-title { font-family: var(--font-display); font-size: 13.5px; font-weight: 600; color: var(--text-soft); letter-spacing: .06em; text-transform: uppercase; }
+    .dash-dots { display: flex; gap: 6px; }
+    .dash-dots i { width: 9px; height: 9px; border-radius: 50%; display: block; }
+
+    /* animated line chart draw-in */
+    .chart-line { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 2.4s .4s ease forwards; }
+    .chart-area { opacity: 0; animation: fadein 1.4s 1.6s ease forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fadein { to { opacity: 1; } }
+    .bar { transform-origin: bottom; transform: scaleY(0); animation: grow 1s ease forwards; }
+    @keyframes grow { to { transform: scaleY(1); } }
+
+    /* floating mini-cards around the dashboard */
+    .float-chip {
+      position: absolute; display: flex; align-items: center; gap: 10px;
+      background: rgba(13,20,36,.92); border: 1px solid var(--line);
+      border-radius: 14px; padding: 12px 16px; backdrop-filter: blur(8px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.4);
+      animation: floaty 6s ease-in-out infinite;
+    }
+    .float-chip .fc-icon { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 16px; }
+    .float-chip .fc-label { font-size: 12px; color: var(--text-soft); }
+    .float-chip .fc-value { font-family: var(--font-display); font-size: 13.5px; font-weight: 600; }
+    .chip-1 { top: -26px; right: -14px; animation-delay: .8s; }
+    .chip-2 { bottom: 84px; left: -34px; animation-delay: 1.6s; }
+    .chip-3 { bottom: -24px; right: 34px; animation-delay: 2.4s; }
+
+    /* ================= ABOUT ================= */
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: start; }
+    .about-text p { color: var(--text-soft); margin-bottom: 18px; font-size: 16.5px; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-highlights { display: grid; gap: 14px; }
+    .highlight {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 18px 20px;
+      transition: transform .25s, border-color .25s;
+    }
+    .highlight:hover { transform: translateX(6px); border-color: rgba(34,211,238,.4); }
+    .highlight .hl-icon { font-size: 20px; line-height: 1.3; }
+    .highlight h3 { font-size: 15.5px; margin-bottom: 3px; }
+    .highlight p { font-size: 13.8px; color: var(--text-soft); }
+
+    /* ================= SKILLS ================= */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+    .skill-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 26px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .skill-card:hover { transform: translateY(-6px); border-color: rgba(109,139,255,.4); box-shadow: 0 18px 44px rgba(0,0,0,.35); }
+    .skill-card .sk-icon {
+      width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+      font-size: 21px; margin-bottom: 16px;
+      background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.22);
+    }
+    .skill-card h3 { font-size: 18px; margin-bottom: 8px; }
+    .skill-card .sk-desc { font-size: 14px; color: var(--text-soft); margin-bottom: 16px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* ================= EXPERIENCE TIMELINE ================= */
+    .timeline { position: relative; max-width: 860px; margin: 0 auto; }
+    .timeline::before {
+      content: ""; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2), var(--accent-3));
+      opacity: .45;
+    }
+    .tl-item { position: relative; padding-left: 48px; margin-bottom: 44px; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-item::before {
+      content: ""; position: absolute; left: 0; top: 8px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--accent);
+      box-shadow: 0 0 0 5px rgba(34,211,238,.12);
+    }
+    .tl-meta { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: baseline; margin-bottom: 6px; }
+    .tl-role { font-family: var(--font-display); font-size: 20px; font-weight: 700; }
+    .tl-date {
+      font-size: 12.5px; font-weight: 600; color: var(--accent);
+      background: rgba(34,211,238,.09); border: 1px solid rgba(34,211,238,.25);
+      padding: 3px 12px; border-radius: 999px;
+    }
+    .tl-company { font-size: 14.5px; color: var(--text-soft); margin-bottom: 14px; }
+    .tl-company strong { color: var(--text); }
+    .tl-body {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 22px 24px;
+    }
+    .tl-body > p { font-size: 14.5px; color: var(--text-soft); margin-bottom: 14px; }
+    .tl-body ul { list-style: none; display: grid; gap: 10px; margin-bottom: 16px; }
+    .tl-body ul li { position: relative; padding-left: 22px; font-size: 14.5px; color: var(--text-soft); }
+    .tl-body ul li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .tl-body ul li strong { color: var(--text); font-weight: 600; }
+    .tl-tech { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* ================= PROJECTS ================= */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px; }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px; display: flex; flex-direction: column;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--grad); opacity: 0; transition: opacity .25s;
+    }
+    .project-card:hover { transform: translateY(-6px); border-color: rgba(167,139,250,.4); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+    .project-card:hover::before { opacity: 1; }
+    .pc-domain { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-3); margin-bottom: 10px; }
+    .project-card h3 { font-size: 19.5px; margin-bottom: 14px; }
+    .pc-row { margin-bottom: 12px; font-size: 14px; color: var(--text-soft); }
+    .pc-row b { display: block; color: var(--text); font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
+    .pc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 14px; }
+
+    /* ================= SERVICES ================= */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px; transition: transform .25s, border-color .25s;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(52,211,153,.4); }
+    .service-card .sv-num { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+    .service-card h3 { font-size: 18px; margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--text-soft); }
+
+    /* ================= TOOLS ================= */
+    .tools-cloud { display: flex; flex-wrap: wrap; gap: 12px; max-width: 900px; }
+    .tool-tag {
+      padding: 10px 20px; border-radius: 12px; font-family: var(--font-display);
+      font-size: 14.5px; font-weight: 600; color: var(--text);
+      background: var(--surface); border: 1px solid var(--line);
+      transition: transform .2s, border-color .2s, color .2s;
+    }
+    .tool-tag:hover { transform: translateY(-3px); border-color: var(--accent); color: var(--accent); }
+
+    /* ================= EDUCATION ================= */
+    .edu-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; }
+    .edu-card, .event-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 22px 24px; margin-bottom: 16px;
+      transition: transform .25s, border-color .25s;
+    }
+    .edu-card:hover, .event-card:hover { transform: translateX(6px); border-color: rgba(34,211,238,.4); }
+    .edu-card h3 { font-size: 16.5px; margin-bottom: 4px; }
+    .edu-card .edu-school, .event-card p { font-size: 14px; color: var(--text-soft); }
+    .edu-year {
+      float: right; font-size: 12.5px; font-weight: 600; color: var(--accent-3);
+      background: rgba(167,139,250,.1); border: 1px solid rgba(167,139,250,.3);
+      padding: 2px 12px; border-radius: 999px; margin-left: 12px;
+    }
+    .event-card h3 { font-size: 15.5px; margin-bottom: 4px; }
+    .edu-subhead { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin: 0 0 18px; color: var(--text); }
+
+    /* ================= CONTACT ================= */
+    .contact-wrap {
+      text-align: center; max-width: 660px; margin: 0 auto;
+      background: linear-gradient(160deg, var(--surface-2), var(--surface));
+      border: 1px solid var(--line); border-radius: 24px; padding: 64px 40px;
+      position: relative; overflow: hidden;
+    }
+    .contact-wrap::before {
+      content: ""; position: absolute; inset: -1px; border-radius: 24px; padding: 1px;
+      background: var(--grad); opacity: .35;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none;
+    }
+    .contact-wrap h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 14px; }
+    .contact-wrap > p { color: var(--text-soft); margin-bottom: 32px; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+    .contact-loc { margin-top: 26px; font-size: 13.5px; color: var(--text-soft); }
+
+    /* ================= FOOTER ================= */
+    footer { border-top: 1px solid var(--line); padding: 30px 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; color: var(--text-soft); font-size: 13.5px; }
+    .footer-inner a { color: var(--text-soft); text-decoration: none; margin-left: 18px; transition: color .2s; }
+    .footer-inner a:hover { color: var(--accent); }
+
+    /* ================= DYNAMIC EFFECTS ================= */
+
+    /* Scroll progress bar along the top of the page */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0;
+      background: var(--grad); z-index: 200;
+      box-shadow: 0 0 12px rgba(34,211,238,.55);
+    }
+
+    /* Cursor spotlight: a soft glow that follows the mouse (desktop only) */
+    .spotlight {
+      position: fixed; inset: 0; pointer-events: none; z-index: 2;
+      background: radial-gradient(480px circle at var(--mx, -500px) var(--my, -500px), rgba(34,211,238,.055), transparent 65%);
+      display: none;
+    }
+    @media (pointer: fine) { .spotlight { display: block; } }
+
+    /* Nav gains depth once you scroll */
+    .nav.scrolled { background: rgba(6,10,20,.92); box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+
+    /* Blinking caret for the typewriter headline */
+    .typed-caret {
+      display: inline-block; width: 3px; height: .95em;
+      background: var(--accent); margin-left: 5px; vertical-align: -0.12em;
+      animation: blink 1s steps(1) infinite; border-radius: 2px;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Reserve headline height so the typewriter never shifts the layout:
+       an invisible copy of the longest phrase fixes the h1 height */
+    .hero h1 { display: grid; }
+    .h1-sizer { grid-area: 1 / 1; visibility: hidden; pointer-events: none; }
+    .h1-live { grid-area: 1 / 1; }
+
+    /* Language switch (EN / FR) in the nav */
+    .lang-switch {
+      display: flex; gap: 2px; padding: 3px;
+      border: 1px solid var(--line); border-radius: 999px;
+      background: rgba(148,163,184,.05);
+    }
+    .lang-switch button {
+      background: none; border: none; cursor: pointer;
+      color: var(--text-soft); font-family: var(--font-display); font-weight: 600; font-size: 12.5px;
+      padding: 5px 12px; border-radius: 999px; transition: background .2s, color .2s;
+    }
+    .lang-switch button.active { background: var(--grad); color: #04121b; }
+
+    /* Particle canvas behind the hero content */
+    .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .hero .container { position: relative; z-index: 1; }
+
+    /* Hero visual reacts to the mouse (3D tilt, driven by JS) */
+    .hero-visual { perspective: 1100px; }
+    .dash-card { will-change: transform; }
+
+    /* Project cards: 3D tilt + glare driven by JS */
+    .project-card { transform-style: preserve-3d; }
+    .projects-grid { perspective: 1200px; }
+
+    /* Tools marquee: two rows drifting in opposite directions, pause on hover */
+    .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee + .marquee { margin-top: 16px; }
+    .marquee-track { display: flex; gap: 12px; width: max-content; animation: slide 36s linear infinite; }
+    .marquee-track.reverse { animation-direction: reverse; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+    .marquee .tool-tag { white-space: nowrap; }
+
+    /* Big ghost numbers behind section titles for editorial character */
+    .section-head { position: relative; }
+    .ghost-num {
+      position: absolute; top: -58px; left: -10px; z-index: -1;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(90px, 13vw, 160px); line-height: 1;
+      color: transparent; -webkit-text-stroke: 1px rgba(148,163,184,.10);
+      user-select: none; pointer-events: none;
+    }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 70px; }
+      .hero { padding-top: 120px; min-height: 0; }
+      .about-grid, .edu-grid { grid-template-columns: 1fr; }
+      .chip-2 { left: -8px; }
+    }
+    @media (max-width: 720px) {
+      section { padding: 72px 0; }
+      .nav-links {
+        position: fixed; top: 68px; right: 0; left: 0;
+        flex-direction: column; gap: 0; padding: 12px 0;
+        background: rgba(6,10,20,.97); border-bottom: 1px solid var(--line);
+        transform: translateY(-130%); transition: transform .3s ease;
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links li { text-align: center; }
+      .nav-links a { display: block; padding: 13px; font-size: 16px; }
+      .hamburger { display: flex; }
+      .nav-cta { display: none; }
+      .hero h1 { font-size: 36px; }
+      .float-chip { padding: 9px 12px; }
+      .chip-1 { top: -18px; right: 0; }
+      .chip-3 { right: 6px; }
+      .hero-facts { gap: 18px; }
+      .contact-wrap { padding: 48px 22px; }
+      .tl-item { padding-left: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll progress indicator + cursor spotlight overlays -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="spotlight" id="spotlight"></div>
+
+  <!-- ================= NAVIGATION ================= -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">Hajar<span>.</span>Elkamouni</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+      <div class="lang-switch" id="langSwitch" aria-label="Language">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="fr">FR</button>
+      </div>
+      <a href="#contact" class="btn btn-primary nav-cta">Contact Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="home">
+    <!-- Animated particle network (canvas, drawn by JS) -->
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="pulse-dot"></span> Data Analyst &amp; Data Engineer · Casablanca &amp; Rabat, Morocco</div>
+        <h1>
+          <!-- Invisible sizer: keeps the h1 height constant so the hero graph never moves -->
+          <span class="h1-sizer" aria-hidden="true" id="h1Sizer">Turning raw data into dashboards that run themselves.</span>
+          <span class="h1-live"><span id="h1Prefix">Turning raw data into </span><span class="grad-text" id="typedText">decisions that move business.</span><span class="typed-caret"></span></span>
+        </h1>
+        <p class="hero-sub">
+          I'm <strong>Hajar Elkamouni</strong>, a data engineer and analyst working in the payments industry.
+          I design distributed ETL pipelines, automate BI reporting, and build machine-learning models
+          that transform complex data into reliable KPIs and clear business direction.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <!-- Place your resume PDF next to this file and keep the name below -->
+          <a href="Hajar_Elkamouni_Resume.pdf" class="btn btn-ghost" download>Download Resume</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+        <div class="hero-facts">
+          <div class="fact reveal"><div class="fact-top grad-text">ETL / ELT</div><div class="fact-sub">Distributed pipelines with PySpark</div></div>
+          <div class="fact reveal"><div class="fact-top grad-text">BI Automation</div><div class="fact-sub">Power BI + Power Automate reporting</div></div>
+          <div class="fact reveal"><div class="fact-top grad-text">ML &amp; AI</div><div class="fact-sub">Segmentation · Forecasting · Deep learning</div></div>
+        </div>
+      </div>
+
+      <!-- Abstract analytics visual (pure SVG/CSS, no images needed) -->
+      <div class="hero-visual">
+        <div class="dash-card">
+          <div class="dash-head">
+            <span class="dash-title">Performance Overview</span>
+            <span class="dash-dots"><i style="background:#f87171"></i><i style="background:#fbbf24"></i><i style="background:#34d399"></i></span>
+          </div>
+          <svg viewBox="0 0 460 250" width="100%" role="img" aria-label="Abstract analytics chart">
+            <defs>
+              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#22d3ee"/><stop offset="55%" stop-color="#6d8bff"/><stop offset="100%" stop-color="#a78bfa"/>
+              </linearGradient>
+              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#22d3ee" stop-opacity=".22"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- gridlines -->
+            <g stroke="rgba(148,163,184,.12)" stroke-width="1">
+              <line x1="0" y1="60" x2="460" y2="60"/><line x1="0" y1="120" x2="460" y2="120"/><line x1="0" y1="180" x2="460" y2="180"/>
+            </g>
+            <!-- bars -->
+            <g fill="rgba(109,139,255,.34)">
+              <rect class="bar" x="28"  y="150" width="26" height="80" rx="5" style="animation-delay:.3s"/>
+              <rect class="bar" x="86"  y="120" width="26" height="110" rx="5" style="animation-delay:.5s"/>
+              <rect class="bar" x="144" y="140" width="26" height="90" rx="5" style="animation-delay:.7s"/>
+              <rect class="bar" x="202" y="95"  width="26" height="135" rx="5" style="animation-delay:.9s"/>
+              <rect class="bar" x="260" y="115" width="26" height="115" rx="5" style="animation-delay:1.1s"/>
+              <rect class="bar" x="318" y="70"  width="26" height="160" rx="5" style="animation-delay:1.3s"/>
+              <rect class="bar" x="376" y="88"  width="26" height="142" rx="5" style="animation-delay:1.5s"/>
+            </g>
+            <!-- area under trend line -->
+            <path class="chart-area" fill="url(#areaGrad)" d="M10,170 C70,150 110,105 170,118 C230,131 260,70 320,64 C370,59 420,42 450,34 L450,250 L10,250 Z"/>
+            <!-- trend line -->
+            <path class="chart-line" fill="none" stroke="url(#lineGrad)" stroke-width="3.5" stroke-linecap="round"
+                  d="M10,170 C70,150 110,105 170,118 C230,131 260,70 320,64 C370,59 420,42 450,34"/>
+            <circle cx="450" cy="34" r="6" fill="#a78bfa"/>
+            <circle cx="450" cy="34" r="11" fill="none" stroke="#a78bfa" stroke-opacity=".4"/>
+          </svg>
+        </div>
+        <!-- floating chips: real stack, no fake numbers -->
+        <div class="float-chip chip-1">
+          <span class="fc-icon" style="background:rgba(34,211,238,.14); color:var(--accent)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></span>
+          <span><span class="fc-label">Pipeline</span><br/><span class="fc-value">PySpark ETL → Data Layer</span></span>
+        </div>
+        <div class="float-chip chip-2">
+          <span class="fc-icon" style="background:rgba(167,139,250,.14); color:var(--accent-3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="20" x2="6" y2="12"/><line x1="12" y1="20" x2="12" y2="6"/><line x1="18" y1="20" x2="18" y2="14"/></svg></span>
+          <span><span class="fc-label">Reporting</span><br/><span class="fc-value">Automated Power BI</span></span>
+        </div>
+        <div class="float-chip chip-3">
+          <span class="fc-icon" style="background:rgba(52,211,153,.14); color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+          <span><span class="fc-label">Analytics</span><br/><span class="fc-value">ML · Cardholder Behavior Analysis</span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section-alt">
+    <div class="container">
+      <div class="kicker reveal">About</div>
+      <h2 class="section-title reveal">Engineering data, <span class="grad-text">delivering clarity.</span></h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a Data Analyst and Data Engineer with an <strong>engineering degree in Data Science &amp; IoT from ENSIAS</strong>,
+            one of Morocco's leading engineering schools. Today I work at <strong>Attijari Payment</strong> in Casablanca,
+            where I sit at the intersection of data engineering, business intelligence and machine learning
+            in the fast-moving payments industry.
+          </p>
+          <p>
+            My work covers the full data lifecycle: building <strong>distributed ETL pipelines with PySpark</strong>,
+            structuring data layers for advanced analytics, <strong>automating executive reporting</strong> with Power BI
+            and Power Automate, and applying machine learning to real business problems - from
+            <strong>cardholder segmentation</strong> to <strong>ATM cash-demand forecasting with ARIMAX</strong>.
+          </p>
+          <p>
+            What sets my approach apart is a strong grounding in business needs. I don't just move data:
+            I contribute to the <strong>data roadmap and analytics planning</strong> of the organization, making sure
+            every pipeline, model and dashboard answers a real performance question. I work fluently in
+            <strong>English, French and Arabic</strong>, and I'm comfortable in Agile/Scrum teams.
+          </p>
+        </div>
+        <div class="about-highlights">
+          <div class="highlight reveal">
+            <span class="hl-icon">🔧</span>
+            <div><h3>End-to-end ownership</h3><p>From raw ingestion to the dashboard on a decision-maker's screen.</p></div>
+          </div>
+          <div class="highlight reveal">
+            <span class="hl-icon">🏦</span>
+            <div><h3>Payments &amp; fintech domain</h3><p>Acquiring, issuing, card production and transaction analytics.</p></div>
+          </div>
+          <div class="highlight reveal">
+            <span class="hl-icon">🤖</span>
+            <div><h3>ML applied to business</h3><p>Segmentation, NLP classification and time-series forecasting in production contexts.</p></div>
+          </div>
+          <div class="highlight reveal">
+            <span class="hl-icon">🌍</span>
+            <div><h3>International-ready</h3><p>Trilingual (English, French, Arabic) and trained on rigorous engineering fundamentals.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="container">
+      <div class="kicker reveal">Skills</div>
+      <h2 class="section-title reveal">A hybrid <span class="grad-text">data skill set.</span></h2>
+      <p class="section-lede reveal">Engineering-grade pipelines, analyst-grade insight: one profile covering the modern data stack.</p>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="sk-icon">⚙️</div>
+          <h3>Data Engineering</h3>
+          <p class="sk-desc">Distributed ETL/ELT pipeline design, big data processing and orchestration.</p>
+          <div class="skill-tags"><span class="tag">Apache Spark</span><span class="tag">PySpark</span><span class="tag">Airflow</span><span class="tag">Hadoop</span><span class="tag">HDFS</span><span class="tag">Hive</span><span class="tag">HBase</span><span class="tag">Hue</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="sk-icon">📈</div>
+          <h3>Data Analysis &amp; Machine Learning</h3>
+          <p class="sk-desc">Behavioral segmentation, deep learning, generative AI and time series forecasting.</p>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">Generative AI</span><span class="tag">NLP</span><span class="tag">Time Series Forecasting</span><span class="tag">Segmentation</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="sk-icon">📊</div>
+          <h3>Business Intelligence</h3>
+          <p class="sk-desc">Interactive dashboards, KPI design and fully automated reporting workflows.</p>
+          <div class="skill-tags"><span class="tag">Power BI</span><span class="tag">Power Automate</span><span class="tag">KPI Reporting</span><span class="tag">Dashboard Automation</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="sk-icon">🗄️</div>
+          <h3>Databases</h3>
+          <p class="sk-desc">Relational and NoSQL data modeling, querying and administration.</p>
+          <div class="skill-tags"><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">NoSQL</span><span class="tag">SQL</span><span class="tag">Data Modeling</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="sk-icon">💻</div>
+          <h3>Programming</h3>
+          <p class="sk-desc">Clean, versioned code for data workflows and web applications.</p>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Shell</span><span class="tag">Vue.js / Nuxt.js</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="sk-icon">☁️</div>
+          <h3>Platforms &amp; Tools</h3>
+          <p class="sk-desc">Modern development and data platform tooling.</p>
+          <div class="skill-tags"><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">IBM Cloud Pak for Data</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="sk-icon">🔁</div>
+          <h3>Ways of Working</h3>
+          <p class="sk-desc">Structured delivery within cross-functional product teams.</p>
+          <div class="skill-tags"><span class="tag">Agile / Scrum</span><span class="tag">Data Roadmapping</span><span class="tag">Analytics Planning</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="sk-icon">🗣️</div>
+          <h3>Languages</h3>
+          <p class="sk-desc">Comfortable working with international teams and stakeholders.</p>
+          <div class="skill-tags"><span class="tag">English (Fluent)</span><span class="tag">French (Fluent)</span><span class="tag">Arabic (Native)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience" class="section-alt">
+    <div class="container">
+      <div class="kicker reveal">Experience</div>
+      <h2 class="section-title reveal">Where I've made <span class="grad-text">an impact.</span></h2>
+      <p class="section-lede reveal">From engineering internships to production data systems in the payments industry.</p>
+
+      <div class="timeline">
+        <!-- Attijari Payment -->
+        <div class="tl-item reveal">
+          <div class="tl-meta"><span class="tl-role">Data Analyst / Data Engineer</span><span class="tl-date">Oct 2024 - Present</span></div>
+          <div class="tl-company"><strong>Attijari Payment</strong> · Casablanca, Morocco</div>
+          <div class="tl-body">
+            <p>Full-scope data role in a payment company: engineering pipelines, automating BI and applying machine learning across acquiring and issuing activities.</p>
+            <ul>
+              <li>Built a <strong>distributed ETL pipeline with PySpark</strong> for data ingestion and transformation, loading into a structured data layer that powers advanced analytics.</li>
+              <li>Developed and <strong>fully automated an interactive Power BI dashboard</strong> tracking the commercial and financial performance of acquiring activities, using Power Automate for hands-free refresh and distribution.</li>
+              <li>Delivered Power BI dashboards monitoring <strong>issuing payment performance</strong> and analyzing <strong>bank card stock and production</strong>.</li>
+              <li>Contributed to the <strong>data roadmap and workload planning</strong> of analytics projects, helping structure and steer the organization's data initiatives.</li>
+              <li>Applied <strong>machine learning to segment cardholders</strong> and analyze user behavior, supporting the optimization of digital payments.</li>
+              <li>Designed an <strong>ATM cash-demand forecasting system based on ARIMAX</strong>, optimizing cash levels and minimizing the risk of cash-outs.</li>
+            </ul>
+            <div class="tl-tech"><span class="tag">PySpark</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">HDFS</span><span class="tag">Hive</span><span class="tag">Hue</span><span class="tag">Impala</span><span class="tag">Power BI</span><span class="tag">Power Automate</span><span class="tag">Machine Learning</span><span class="tag">ARIMAX</span></div>
+          </div>
+        </div>
+
+        <!-- BIGMSOLUTIONS -->
+        <div class="tl-item reveal">
+          <div class="tl-meta"><span class="tl-role">Full-Stack Developer Intern (Graduation Project)</span><span class="tl-date">Feb 2024 - Jul 2024</span></div>
+          <div class="tl-company"><strong>BIGMSOLUTIONS</strong> · Casablanca, Morocco</div>
+          <div class="tl-body">
+            <p>End-of-studies engineering project combining data modeling and modern web development.</p>
+            <ul>
+              <li>Designed <strong>relational data models</strong> and managed SQL databases underpinning the application.</li>
+              <li>Developed a <strong>full-stack web application</strong> with Vue.js / Nuxt.js.</li>
+            </ul>
+            <div class="tl-tech"><span class="tag">SQL</span><span class="tag">Data Modeling</span><span class="tag">Vue.js</span><span class="tag">Nuxt.js</span></div>
+          </div>
+        </div>
+
+        <!-- AFD.TECH -->
+        <div class="tl-item reveal">
+          <div class="tl-meta"><span class="tl-role">Data Scientist Intern</span><span class="tl-date">Jul 2023 - Sep 2023</span></div>
+          <div class="tl-company"><strong>AFD.TECH</strong> (Part of Accenture) · Rabat, Morocco</div>
+          <div class="tl-body">
+            <p>Applied NLP internship within an international consulting environment.</p>
+            <ul>
+              <li>Processed and prepared <strong>textual datasets</strong> for modeling.</li>
+              <li>Developed an <strong>NLP-based classification model</strong>.</li>
+            </ul>
+            <div class="tl-tech"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Text Processing</span><span class="tag">Classification</span></div>
+          </div>
+        </div>
+
+        <!-- Préfecture -->
+        <div class="tl-item reveal">
+          <div class="tl-meta"><span class="tl-role">Software Developer Intern</span><span class="tl-date">Jul 2022 - Aug 2022</span></div>
+          <div class="tl-company"><strong>Préfecture</strong> · Khemisset, Morocco</div>
+          <div class="tl-body">
+            <ul>
+              <li>Designed and structured <strong>databases</strong> for a public administration.</li>
+              <li>Built a <strong>web application for inventory management</strong>.</li>
+            </ul>
+            <div class="tl-tech"><span class="tag">Databases</span><span class="tag">Web Development</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="container">
+      <div class="kicker reveal">Selected Work</div>
+      <h2 class="section-title reveal">Projects built on <span class="grad-text">real business problems.</span></h2>
+      <p class="section-lede reveal">Production work from the payments industry and applied data science - every project below solved a concrete operational need.</p>
+
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="pc-domain">Data Engineering</div>
+          <h3>Distributed ETL Pipeline</h3>
+          <div class="pc-row"><b>Problem</b> Raw operational data was not structured for advanced analytics.</div>
+          <div class="pc-row"><b>Solution</b> Designed and built a distributed PySpark pipeline handling ingestion and transformation, loading into a structured data layer.</div>
+          <div class="pc-row"><b>Impact</b> A reliable analytical foundation that powers the company's advanced analytics and reporting.</div>
+          <div class="pc-tags"><span class="tag">PySpark</span><span class="tag">ETL</span><span class="tag">Data Layer</span></div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-domain">Business Intelligence</div>
+          <h3>Acquiring Performance Dashboard</h3>
+          <div class="pc-row"><b>Problem</b> Commercial and financial tracking of acquiring activities required manual, repetitive reporting.</div>
+          <div class="pc-row"><b>Solution</b> Built an interactive Power BI dashboard and automated its refresh and distribution with Power Automate.</div>
+          <div class="pc-row"><b>Impact</b> Hands-free, always-current visibility on acquiring performance for business stakeholders.</div>
+          <div class="pc-tags"><span class="tag">Power BI</span><span class="tag">Power Automate</span><span class="tag">KPI Reporting</span></div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-domain">Business Intelligence</div>
+          <h3>Issuing &amp; Card Production Analytics</h3>
+          <div class="pc-row"><b>Problem</b> Teams needed clear monitoring of issuing payment performance and card stock and production.</div>
+          <div class="pc-row"><b>Solution</b> Delivered dedicated Power BI dashboards covering issuing performance, card inventory and production analysis.</div>
+          <div class="pc-row"><b>Impact</b> A single, trusted view for steering issuing operations and anticipating card stock needs.</div>
+          <div class="pc-tags"><span class="tag">Power BI</span><span class="tag">Payments Analytics</span></div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-domain">Machine Learning</div>
+          <h3>Cardholder Behavioral Segmentation</h3>
+          <div class="pc-row"><b>Problem</b> Optimizing digital payments required understanding how different card users actually behave.</div>
+          <div class="pc-row"><b>Solution</b> Applied machine learning to segment bank card users and analyze behavioral patterns.</div>
+          <div class="pc-row"><b>Impact</b> Actionable user segments supporting the optimization of digital payment strategies.</div>
+          <div class="pc-tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Segmentation</span></div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-domain">Forecasting</div>
+          <h3>ATM Cash-Demand Forecasting</h3>
+          <div class="pc-row"><b>Problem</b> ATMs risk both costly cash surpluses and service-breaking cash-outs without accurate demand planning.</div>
+          <div class="pc-row"><b>Solution</b> Designed a liquidity-demand forecasting system based on the ARIMAX time-series model.</div>
+          <div class="pc-row"><b>Impact</b> Optimized cash levels across ATMs and reduced the risk of cash shortages.</div>
+          <div class="pc-tags"><span class="tag">ARIMAX</span><span class="tag">Time Series</span><span class="tag">Python</span></div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-domain">NLP</div>
+          <h3>NLP Text Classification Model</h3>
+          <div class="pc-row"><b>Problem</b> Unstructured text data needed to be automatically categorized (AFD.TECH, part of Accenture).</div>
+          <div class="pc-row"><b>Solution</b> Processed and prepared textual datasets, then developed an NLP-based classification model.</div>
+          <div class="pc-row"><b>Impact</b> Automated classification of text data, replacing manual review.</div>
+          <div class="pc-tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Classification</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services" class="section-alt">
+    <div class="container">
+      <div class="kicker reveal">What I Can Do</div>
+      <h2 class="section-title reveal">Value I bring to <span class="grad-text">your organization.</span></h2>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="sv-num">01</div>
+          <h3>ETL / ELT Pipeline Development</h3>
+          <p>Distributed, maintainable data pipelines with PySpark and the Hadoop ecosystem, from raw ingestion to analytics-ready data layers.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="sv-num">02</div>
+          <h3>Dashboard Development &amp; Automation</h3>
+          <p>Interactive Power BI dashboards with automated refresh and distribution via Power Automate, so reporting runs itself.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="sv-num">03</div>
+          <h3>KPI Reporting &amp; Performance Monitoring</h3>
+          <p>Reliable indicators for commercial, financial and operational steering, designed around what decision-makers actually need.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="sv-num">04</div>
+          <h3>SQL Analytics &amp; Data Modeling</h3>
+          <p>Robust relational models and sharp SQL analysis on PostgreSQL, MySQL and NoSQL systems.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="sv-num">05</div>
+          <h3>Machine Learning &amp; Forecasting</h3>
+          <p>Customer segmentation, deep learning, NLP and time series forecasting applied to concrete business questions.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="sv-num">06</div>
+          <h3>Business Insights &amp; Data Strategy</h3>
+          <p>Turning analysis into direction, backed by experience contributing to data roadmaps and analytics project planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOOLS & TECHNOLOGIES ================= -->
+  <section id="tools">
+    <div class="container">
+      <div class="kicker reveal">Stack</div>
+      <h2 class="section-title reveal">Tools &amp; <span class="grad-text">technologies.</span></h2>
+      <!-- Two auto-scrolling rows (opposite directions), pause on hover.
+           Row content is duplicated by JS for a seamless infinite loop. -->
+      <div class="reveal">
+        <div class="marquee">
+          <div class="marquee-track" data-marquee>
+            <span class="tool-tag">Python</span><span class="tool-tag">SQL</span><span class="tool-tag">PySpark</span>
+            <span class="tool-tag">Apache Spark</span><span class="tool-tag">Airflow</span><span class="tool-tag">Hadoop</span>
+            <span class="tool-tag">HDFS</span><span class="tool-tag">Hive</span><span class="tool-tag">HBase</span>
+            <span class="tool-tag">Hue</span><span class="tool-tag">ETL</span><span class="tool-tag">Machine Learning</span>
+          </div>
+        </div>
+        <div class="marquee">
+          <div class="marquee-track reverse" data-marquee>
+            <span class="tool-tag">Deep Learning</span><span class="tool-tag">PostgreSQL</span><span class="tool-tag">MySQL</span>
+            <span class="tool-tag">NoSQL</span><span class="tool-tag">Power BI</span><span class="tool-tag">Power Automate</span>
+            <span class="tool-tag">IBM Cloud Pak for Data</span><span class="tool-tag">Git</span><span class="tool-tag">Docker</span>
+            <span class="tool-tag">Shell</span><span class="tool-tag">Vue.js / Nuxt.js</span><span class="tool-tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION & EVENTS ================= -->
+  <section id="education" class="section-alt">
+    <div class="container">
+      <div class="kicker reveal">Background</div>
+      <h2 class="section-title reveal">Education &amp; <span class="grad-text">professional events.</span></h2>
+      <div class="edu-grid">
+        <div>
+          <h3 class="edu-subhead reveal">🎓 Education</h3>
+          <div class="edu-card reveal">
+            <span class="edu-year">2024</span>
+            <h3>Engineering Degree in Data Science &amp; IoT</h3>
+            <p class="edu-school">ENSIAS, École Nationale Supérieure d'Informatique et d'Analyse des Systèmes, Rabat</p>
+          </div>
+          <div class="edu-card reveal">
+            <span class="edu-year">2021</span>
+            <h3>Classes Préparatoires aux Grandes Écoles (MP)</h3>
+            <p class="edu-school">Lycée Moulay Youssef · Intensive mathematics &amp; physics track</p>
+          </div>
+          <div class="edu-card reveal">
+            <span class="edu-year">2019</span>
+            <h3>International Baccalaureate in Mathematical Sciences</h3>
+            <p class="edu-school">Lycée Mohammed Ben Elhassan Elouazzani</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="edu-subhead reveal">🏛️ Professional Events</h3>
+          <div class="event-card reveal">
+            <span class="edu-year">2025</span>
+            <h3>Visa Bootcamp</h3>
+            <p>Payment systems and financial transaction flows.</p>
+          </div>
+          <div class="event-card reveal">
+            <span class="edu-year">2025</span>
+            <h3>Mastercard Event</h3>
+            <p>Fraud detection and transaction security.</p>
+          </div>
+          <div class="event-card reveal">
+            <span class="edu-year">2024</span>
+            <h3>IBM DataLab</h3>
+            <p>Big Data solutions and data processing architectures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrap reveal">
+        <div class="kicker" style="justify-content:center">Contact</div>
+        <h2>Let's turn your data into <span class="grad-text">your advantage.</span></h2>
+        <p>I'm open to Data Analyst, Data Engineer, Data Scientist, BI and Analytics Engineer opportunities, including international and remote roles. If you're a recruiter or a company with a data challenge, I'd be glad to talk.</p>
+        <div class="contact-links">
+          <a href="mailto:elkamounihajar11@gmail.com" class="btn btn-primary"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> elkamounihajar11@gmail.com</a>
+          <a href="https://github.com/hajarelkmouni" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+          <a href="https://www.linkedin.com/in/hajar-elkamouni-34a67a21a/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        </div>
+        <div class="contact-loc">📍 Casablanca &amp; Rabat, Morocco · Available for on-site, hybrid or remote work</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Hajar Elkamouni · Data Analyst &amp; Data Engineer</span>
+      <span>
+        <a href="mailto:elkamounihajar11@gmail.com">Email</a>
+        <a href="https://github.com/hajarelkmouni" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/hajar-elkamouni-34a67a21a/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#home">Back to top ↑</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    // Close the mobile menu after choosing a section
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+
+    // Scroll-reveal: fade sections in as they enter the viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // animate once
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Highlight the nav link of the section currently in view
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const linkMap = {};
+    document.querySelectorAll('.nav-links a').forEach(a => { linkMap[a.getAttribute('href').slice(1)] = a; });
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = linkMap[entry.target.id];
+        if (link) link.classList.toggle('active', entry.isIntersecting);
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => navObserver.observe(s));
+
+    /* ============ DYNAMIC EFFECTS ============ */
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Staggered reveal: siblings animate one after another instead of all at once
+    document.querySelectorAll('.skills-grid, .projects-grid, .services-grid, .about-highlights, .hero-facts, .edu-grid > div').forEach(group => {
+      [...group.querySelectorAll('.reveal')].forEach((el, i) => { el.style.transitionDelay = (i * 90) + 'ms'; });
+    });
+
+    // Scroll progress bar + nav depth on scroll
+    const progress = document.getElementById('scrollProgress');
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+      nav.classList.toggle('scrolled', scrollY > 30);
+    }, { passive: true });
+
+    // Cursor spotlight follows the mouse
+    const spotlight = document.getElementById('spotlight');
+    window.addEventListener('mousemove', e => {
+      spotlight.style.setProperty('--mx', e.clientX + 'px');
+      spotlight.style.setProperty('--my', e.clientY + 'px');
+    }, { passive: true });
+
+    // Typewriter headline: cycles through value statements, per language
+    const TYPED = {
+      en: ['decisions that move business.', 'dashboards that run themselves.', 'pipelines built to scale.', 'insight teams can trust.'],
+      fr: ['des décisions qui font avancer le business.', 'des dashboards qui tournent seuls.', 'des pipelines conçus pour durer.', 'des analyses fiables pour vos équipes.']
+    };
+    const H1_PREFIX = { en: 'Turning raw data into ', fr: 'Transformer les données brutes en ' };
+    let typedPhrases = TYPED.en;
+    const typedEl = document.getElementById('typedText');
+    if (!reduceMotion) {
+      let pi = 0, ci = typedPhrases[0].length, deleting = true;
+      (function type() {
+        const word = typedPhrases[pi % typedPhrases.length];
+        if (ci > word.length) ci = word.length; // guard after a language switch
+        typedEl.textContent = word.slice(0, ci);
+        let delay = deleting ? 28 : 55;
+        if (!deleting && ci === word.length) { delay = 2600; deleting = true; }        // pause on full phrase
+        else if (deleting && ci === 0) { deleting = false; pi = (pi + 1) % typedPhrases.length; delay = 350; }
+        ci += deleting ? -1 : 1;
+        setTimeout(type, delay);
+      })();
+    }
+
+    // Hero visual: 3D parallax tilt following the mouse
+    const heroVisual = document.querySelector('.hero-visual');
+    const dashCard = document.querySelector('.dash-card');
+    if (heroVisual && !reduceMotion && matchMedia('(pointer: fine)').matches) {
+      heroVisual.addEventListener('mousemove', e => {
+        const r = heroVisual.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        dashCard.style.transform = `rotateY(${x * 10}deg) rotateX(${y * -10}deg) translateZ(6px)`;
+        dashCard.style.animation = 'none'; // stop float while interacting
+      });
+      heroVisual.addEventListener('mouseleave', () => {
+        dashCard.style.transform = ''; dashCard.style.animation = '';
+      });
+    }
+
+    // Project cards: subtle 3D tilt on hover
+    if (!reduceMotion && matchMedia('(pointer: fine)').matches) {
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - .5;
+          const y = (e.clientY - r.top) / r.height - .5;
+          card.style.transform = `translateY(-6px) rotateY(${x * 6}deg) rotateX(${y * -6}deg)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+    }
+
+    // Tools marquee: duplicate row content once for a seamless infinite loop
+    document.querySelectorAll('[data-marquee]').forEach(track => {
+      track.innerHTML += track.innerHTML;
+    });
+
+    // Hero particle network: drifting data points connected by faint lines
+    const canvas = document.getElementById('heroCanvas');
+    if (canvas && !reduceMotion) {
+      const ctx = canvas.getContext('2d');
+      let W, H, dots = [];
+      function resize() {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+        const count = Math.min(70, Math.floor(W / 18));
+        dots = Array.from({ length: count }, () => ({
+          x: Math.random() * W, y: Math.random() * H,
+          vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+          r: Math.random() * 1.6 + .6
+        }));
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      (function tick() {
+        ctx.clearRect(0, 0, W, H);
+        for (const d of dots) {
+          d.x += d.vx; d.y += d.vy;
+          if (d.x < 0 || d.x > W) d.vx *= -1;
+          if (d.y < 0 || d.y > H) d.vy *= -1;
+          ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(34,211,238,.32)'; ctx.fill();
+        }
+        for (let i = 0; i < dots.length; i++) {
+          for (let j = i + 1; j < dots.length; j++) {
+            const dx = dots[i].x - dots[j].x, dy = dots[i].y - dots[j].y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(dots[i].x, dots[i].y); ctx.lineTo(dots[j].x, dots[j].y);
+              ctx.strokeStyle = `rgba(109,139,255,${(1 - dist / 120) * .14})`;
+              ctx.lineWidth = 1; ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(tick);
+      })();
+    }
+
+    /* ============ BILINGUAL EN / FR ============
+       English is written in the HTML (default). French lives in the FR
+       dictionary below, keyed by CSS selector. On switch, each element's
+       English innerHTML is cached, then swapped with the French version. */
+    const FR = {
+      // Navigation
+      '.nav-links li:nth-child(1) a': 'À propos',
+      '.nav-links li:nth-child(2) a': 'Compétences',
+      '.nav-links li:nth-child(3) a': 'Expérience',
+      '.nav-links li:nth-child(4) a': 'Projets',
+      '.nav-links li:nth-child(5) a': 'Services',
+      '.nav-links li:nth-child(6) a': 'Formation',
+      '.nav-cta': 'Me contacter',
+
+      // Hero
+      '.hero-eyebrow': '<span class="pulse-dot"></span> Data Analyst &amp; Data Engineer · Casablanca &amp; Rabat, Maroc',
+      '.hero-sub': "Je suis <strong>Hajar Elkamouni</strong>, data engineer et data analyst dans l'industrie des paiements. Je conçois des pipelines ETL distribués, j'automatise le reporting BI et je développe des modèles de machine learning qui transforment des données complexes en KPIs fiables et en décisions claires.",
+      '.hero-ctas a:nth-child(1)': 'Voir mes projets',
+      '.hero-ctas a:nth-child(2)': 'Télécharger mon CV',
+      '.hero-ctas a:nth-child(3)': 'Me contacter',
+      '.hero-facts .fact:nth-child(1) .fact-sub': 'Pipelines distribués avec PySpark',
+      '.hero-facts .fact:nth-child(2) .fact-top': 'Automatisation BI',
+      '.hero-facts .fact:nth-child(2) .fact-sub': 'Reporting Power BI + Power Automate',
+      '.hero-facts .fact:nth-child(3) .fact-top': 'ML &amp; IA',
+      '.hero-facts .fact:nth-child(3) .fact-sub': 'Segmentation · Prévision · Deep learning',
+      '.dash-title': 'Vue de la performance',
+      '.chip-2 .fc-value': 'Power BI automatisé',
+      '.chip-3 .fc-label': 'Analytique',
+      '.chip-3 .fc-value': 'ML · Comportement des porteurs',
+
+      // About
+      '#about .kicker': 'À propos',
+      '#about .section-title': 'Ingénierie des données, <span class="grad-text">clarté des décisions.</span>',
+      '#about .about-text p:nth-of-type(1)': "Je suis Data Analyst et Data Engineer, diplômée <strong>ingénieure en Data Science &amp; IoT de l'ENSIAS</strong>, l'une des grandes écoles d'ingénieurs de référence au Maroc. Je travaille aujourd'hui chez <strong>Attijari Payment</strong> à Casablanca, à l'intersection du data engineering, de la business intelligence et du machine learning, dans le secteur des paiements.",
+      '#about .about-text p:nth-of-type(2)': "Mon travail couvre tout le cycle de vie de la donnée : construction de <strong>pipelines ETL distribués avec PySpark</strong>, structuration de data layers pour l'analyse avancée, <strong>automatisation du reporting</strong> avec Power BI et Power Automate, et machine learning appliqué à de vrais enjeux métier, de la <strong>segmentation des porteurs de cartes</strong> à la <strong>prévision de la demande de cash des GAB avec ARIMAX</strong>.",
+      '#about .about-text p:nth-of-type(3)': "Ce qui distingue mon approche, c'est un ancrage fort dans les besoins métier. Je ne fais pas que déplacer de la donnée : je contribue à la <strong>roadmap data et à la planification analytique</strong> de l'organisation, pour que chaque pipeline, modèle et dashboard réponde à une vraie question de performance. Je travaille couramment en <strong>anglais, français et arabe</strong>, et je suis à l'aise en équipe Agile/Scrum.",
+      '.about-highlights .highlight:nth-child(1) h3': 'De bout en bout',
+      '.about-highlights .highlight:nth-child(1) p': "De l'ingestion brute au dashboard sur l'écran du décideur.",
+      '.about-highlights .highlight:nth-child(2) h3': 'Paiements &amp; fintech',
+      '.about-highlights .highlight:nth-child(2) p': 'Acquisition, émission, production de cartes et analytique transactionnelle.',
+      '.about-highlights .highlight:nth-child(3) h3': 'ML appliqué au métier',
+      '.about-highlights .highlight:nth-child(3) p': 'Segmentation, classification NLP et prévision de séries temporelles en contexte de production.',
+      '.about-highlights .highlight:nth-child(4) h3': "Prête pour l'international",
+      '.about-highlights .highlight:nth-child(4) p': "Trilingue (anglais, français, arabe), formée sur des fondamentaux d'ingénierie exigeants.",
+
+      // Skills
+      '#skills .kicker': 'Compétences',
+      '#skills .section-title': 'Un profil data <span class="grad-text">hybride et complet.</span>',
+      '#skills .section-lede': 'Des pipelines de niveau ingénierie, des analyses de niveau expert : un seul profil pour couvrir la stack data moderne.',
+      '#skills .skill-card:nth-child(1) .sk-desc': 'Conception de pipelines ETL/ELT distribués, big data et orchestration.',
+      '#skills .skill-card:nth-child(2) h3': 'Analyse de données &amp; Machine Learning',
+      '#skills .skill-card:nth-child(2) .sk-desc': 'Segmentation comportementale, deep learning, IA générative et prévision de séries temporelles.',
+      '#skills .skill-card:nth-child(2) .skill-tags': '<span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">IA générative</span><span class="tag">NLP</span><span class="tag">Séries temporelles</span><span class="tag">Segmentation</span>',
+      '#skills .skill-card:nth-child(3) .sk-desc': 'Dashboards interactifs, conception de KPIs et reporting entièrement automatisé.',
+      '#skills .skill-card:nth-child(3) .skill-tags': '<span class="tag">Power BI</span><span class="tag">Power Automate</span><span class="tag">Reporting KPI</span><span class="tag">Automatisation de dashboards</span>',
+      '#skills .skill-card:nth-child(4) h3': 'Bases de données',
+      '#skills .skill-card:nth-child(4) .sk-desc': 'Modélisation relationnelle et NoSQL, requêtage et administration.',
+      '#skills .skill-card:nth-child(4) .skill-tags': '<span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">NoSQL</span><span class="tag">SQL</span><span class="tag">Modélisation de données</span>',
+      '#skills .skill-card:nth-child(5) h3': 'Programmation',
+      '#skills .skill-card:nth-child(5) .sk-desc': 'Du code propre et versionné pour les workflows data et les applications web.',
+      '#skills .skill-card:nth-child(6) h3': 'Plateformes &amp; Outils',
+      '#skills .skill-card:nth-child(6) .sk-desc': 'Outillage moderne de développement et de plateforme data.',
+      '#skills .skill-card:nth-child(7) h3': 'Méthodes de travail',
+      '#skills .skill-card:nth-child(7) .sk-desc': "Delivery structuré au sein d'équipes produit pluridisciplinaires.",
+      '#skills .skill-card:nth-child(7) .skill-tags': '<span class="tag">Agile / Scrum</span><span class="tag">Roadmap data</span><span class="tag">Planification analytique</span>',
+      '#skills .skill-card:nth-child(8) h3': 'Langues',
+      '#skills .skill-card:nth-child(8) .sk-desc': "À l'aise avec des équipes et interlocuteurs internationaux.",
+      '#skills .skill-card:nth-child(8) .skill-tags': '<span class="tag">Anglais (courant)</span><span class="tag">Français (courant)</span><span class="tag">Arabe (langue maternelle)</span>',
+
+      // Experience
+      '#experience .kicker': 'Expérience',
+      '#experience .section-title': "Là où j'ai eu <span class=\"grad-text\">de l'impact.</span>",
+      '#experience .section-lede': "Des stages d'ingénierie aux systèmes data en production dans l'industrie des paiements.",
+      '.timeline .tl-item:nth-child(1) .tl-date': "Oct. 2024 - Aujourd'hui",
+      '.timeline .tl-item:nth-child(1) .tl-company': '<strong>Attijari Payment</strong> · Casablanca, Maroc',
+      '.timeline .tl-item:nth-child(1) .tl-body > p': "Rôle data complet dans une société de paiement : ingénierie de pipelines, automatisation de la BI et machine learning sur les activités d'acquisition et d'émission.",
+      '.timeline .tl-item:nth-child(1) ul li:nth-child(1)': "Développement d'un <strong>pipeline ETL distribué avec PySpark</strong> pour l'ingestion et la transformation des données, avec chargement dans un data layer structuré pour l'analyse avancée.",
+      '.timeline .tl-item:nth-child(1) ul li:nth-child(2)': "Développement et <strong>automatisation complète d'un dashboard Power BI interactif</strong> de suivi commercial et financier des activités d'acquisition, avec rafraîchissement et diffusion via Power Automate.",
+      '.timeline .tl-item:nth-child(1) ul li:nth-child(3)': 'Mise en place de dashboards Power BI de suivi des <strong>performances des paiements en émission</strong> et d\'analyse du <strong>stock et de la production des cartes bancaires</strong>.',
+      '.timeline .tl-item:nth-child(1) ul li:nth-child(4)': 'Contribution à la <strong>roadmap data et au plan de charge</strong> des projets analytiques, pour structurer et piloter les initiatives data de l\'organisation.',
+      '.timeline .tl-item:nth-child(1) ul li:nth-child(5)': '<strong>Segmentation des porteurs de cartes par machine learning</strong> et analyse comportementale pour optimiser les paiements digitaux.',
+      '.timeline .tl-item:nth-child(1) ul li:nth-child(6)': "Conception d'un <strong>système de prévision de la demande de liquidités des GAB basé sur ARIMAX</strong>, optimisant les niveaux de cash et minimisant les risques de rupture.",
+      '.timeline .tl-item:nth-child(2) .tl-role': "Stagiaire Développeuse Full-Stack (Projet de fin d'études)",
+      '.timeline .tl-item:nth-child(2) .tl-date': 'Fév. 2024 - Juil. 2024',
+      '.timeline .tl-item:nth-child(2) .tl-company': '<strong>BIGMSOLUTIONS</strong> · Casablanca, Maroc',
+      '.timeline .tl-item:nth-child(2) .tl-body > p': "Projet de fin d'études d'ingénieur combinant modélisation de données et développement web moderne.",
+      '.timeline .tl-item:nth-child(2) ul li:nth-child(1)': "Conception de <strong>modèles de données relationnels</strong> et gestion des bases SQL de l'application.",
+      '.timeline .tl-item:nth-child(2) ul li:nth-child(2)': "Développement d'une <strong>application web full-stack</strong> avec Vue.js / Nuxt.js.",
+      '.timeline .tl-item:nth-child(3) .tl-role': 'Stagiaire Data Scientist',
+      '.timeline .tl-item:nth-child(3) .tl-date': 'Juil. 2023 - Sept. 2023',
+      '.timeline .tl-item:nth-child(3) .tl-company': '<strong>AFD.TECH</strong> (groupe Accenture) · Rabat, Maroc',
+      '.timeline .tl-item:nth-child(3) .tl-body > p': 'Stage NLP appliqué dans un environnement de conseil international.',
+      '.timeline .tl-item:nth-child(3) ul li:nth-child(1)': 'Traitement et préparation de <strong>données textuelles</strong> pour la modélisation.',
+      '.timeline .tl-item:nth-child(3) ul li:nth-child(2)': "Développement d'un <strong>modèle de classification basé sur le NLP</strong>.",
+      '.timeline .tl-item:nth-child(4) .tl-role': 'Stagiaire Développeuse Logiciel',
+      '.timeline .tl-item:nth-child(4) .tl-date': 'Juil. 2022 - Août 2022',
+      '.timeline .tl-item:nth-child(4) .tl-company': '<strong>Préfecture</strong> · Khemisset, Maroc',
+      '.timeline .tl-item:nth-child(4) ul li:nth-child(1)': 'Conception et structuration de <strong>bases de données</strong> pour une administration publique.',
+      '.timeline .tl-item:nth-child(4) ul li:nth-child(2)': "Développement d'une <strong>application web de gestion des stocks</strong>.",
+
+      // Projects
+      '#projects .kicker': 'Projets',
+      '#projects .section-title': 'Des projets ancrés dans <span class="grad-text">de vrais enjeux métier.</span>',
+      '#projects .section-lede': "Des réalisations issues de l'industrie des paiements et de la data science appliquée : chaque projet répond à un besoin opérationnel concret.",
+      '.projects-grid .project-card:nth-child(1) h3': 'Pipeline ETL distribué',
+      '.projects-grid .project-card:nth-child(1) .pc-row:nth-child(3)': "<b>Problème</b> Les données opérationnelles brutes n'étaient pas structurées pour l'analyse avancée.",
+      '.projects-grid .project-card:nth-child(1) .pc-row:nth-child(4)': "<b>Solution</b> Conception d'un pipeline PySpark distribué gérant l'ingestion et la transformation, avec chargement dans un data layer structuré.",
+      '.projects-grid .project-card:nth-child(1) .pc-row:nth-child(5)': "<b>Impact</b> Une fondation analytique fiable qui alimente le reporting et l'analytique avancée de l'entreprise.",
+      '.projects-grid .project-card:nth-child(2) h3': 'Dashboard de performance acquisition',
+      '.projects-grid .project-card:nth-child(2) .pc-row:nth-child(3)': "<b>Problème</b> Le suivi commercial et financier des activités d'acquisition reposait sur un reporting manuel et répétitif.",
+      '.projects-grid .project-card:nth-child(2) .pc-row:nth-child(4)': '<b>Solution</b> Dashboard Power BI interactif avec rafraîchissement et diffusion automatisés via Power Automate.',
+      '.projects-grid .project-card:nth-child(2) .pc-row:nth-child(5)': "<b>Impact</b> Une visibilité permanente, sans intervention manuelle, sur la performance de l'acquisition.",
+      '.projects-grid .project-card:nth-child(3) h3': 'Analytique émission &amp; production de cartes',
+      '.projects-grid .project-card:nth-child(3) .pc-row:nth-child(3)': "<b>Problème</b> Les équipes avaient besoin d'un suivi clair des paiements en émission, du stock et de la production de cartes.",
+      '.projects-grid .project-card:nth-child(3) .pc-row:nth-child(4)': "<b>Solution</b> Dashboards Power BI dédiés couvrant performance d'émission, inventaire et production de cartes.",
+      '.projects-grid .project-card:nth-child(3) .pc-row:nth-child(5)': "<b>Impact</b> Une vue unique et fiable pour piloter l'émission et anticiper les besoins en cartes.",
+      '.projects-grid .project-card:nth-child(3) .pc-tags': '<span class="tag">Power BI</span><span class="tag">Analytique des paiements</span>',
+      '.projects-grid .project-card:nth-child(4) h3': 'Segmentation comportementale des porteurs',
+      '.projects-grid .project-card:nth-child(4) .pc-row:nth-child(3)': '<b>Problème</b> Optimiser les paiements digitaux exigeait de comprendre les comportements réels des porteurs de cartes.',
+      '.projects-grid .project-card:nth-child(4) .pc-row:nth-child(4)': '<b>Solution</b> Segmentation par machine learning des utilisateurs de cartes et analyse des patterns comportementaux.',
+      '.projects-grid .project-card:nth-child(4) .pc-row:nth-child(5)': "<b>Impact</b> Des segments actionnables au service de l'optimisation des stratégies de paiement digital.",
+      '.projects-grid .project-card:nth-child(5) .pc-domain': 'Prévision',
+      '.projects-grid .project-card:nth-child(5) h3': 'Prévision de la demande de cash des GAB',
+      '.projects-grid .project-card:nth-child(5) .pc-row:nth-child(3)': '<b>Problème</b> Sans planification précise, les GAB risquent à la fois des surplus de cash coûteux et des ruptures de service.',
+      '.projects-grid .project-card:nth-child(5) .pc-row:nth-child(4)': '<b>Solution</b> Système de prévision de la demande de liquidités basé sur le modèle ARIMAX.',
+      '.projects-grid .project-card:nth-child(5) .pc-row:nth-child(5)': '<b>Impact</b> Niveaux de cash optimisés et risque de rupture réduit sur le parc de GAB.',
+      '.projects-grid .project-card:nth-child(5) .pc-tags': '<span class="tag">ARIMAX</span><span class="tag">Séries temporelles</span><span class="tag">Python</span>',
+      '.projects-grid .project-card:nth-child(6) h3': 'Modèle de classification de texte NLP',
+      '.projects-grid .project-card:nth-child(6) .pc-row:nth-child(3)': '<b>Problème</b> Des données textuelles non structurées devaient être catégorisées automatiquement (AFD.TECH, groupe Accenture).',
+      '.projects-grid .project-card:nth-child(6) .pc-row:nth-child(4)': "<b>Solution</b> Préparation des corpus textuels puis développement d'un modèle de classification NLP.",
+      '.projects-grid .project-card:nth-child(6) .pc-row:nth-child(5)': '<b>Impact</b> Une classification automatisée qui remplace la revue manuelle.',
+
+      // Services
+      '#services .kicker': 'Ce que je peux faire',
+      '#services .section-title': "La valeur que j'apporte à <span class=\"grad-text\">votre organisation.</span>",
+      '.services-grid .service-card:nth-child(1) h3': 'Développement de pipelines ETL / ELT',
+      '.services-grid .service-card:nth-child(1) p': "Des pipelines distribués et maintenables avec PySpark et l'écosystème Hadoop, de l'ingestion brute aux data layers prêts pour l'analyse.",
+      '.services-grid .service-card:nth-child(2) h3': 'Développement &amp; automatisation de dashboards',
+      '.services-grid .service-card:nth-child(2) p': 'Des dashboards Power BI interactifs avec rafraîchissement et diffusion automatisés via Power Automate : un reporting qui tourne tout seul.',
+      '.services-grid .service-card:nth-child(3) h3': 'Reporting KPI &amp; suivi de performance',
+      '.services-grid .service-card:nth-child(3) p': 'Des indicateurs fiables pour le pilotage commercial, financier et opérationnel, conçus autour des vrais besoins des décideurs.',
+      '.services-grid .service-card:nth-child(4) h3': 'Analytique SQL &amp; modélisation de données',
+      '.services-grid .service-card:nth-child(4) p': 'Des modèles relationnels robustes et des analyses SQL pointues sur PostgreSQL, MySQL et NoSQL.',
+      '.services-grid .service-card:nth-child(5) h3': 'Machine Learning &amp; prévision',
+      '.services-grid .service-card:nth-child(5) p': 'Segmentation client, deep learning, NLP et prévision de séries temporelles appliqués à des questions métier concrètes.',
+      '.services-grid .service-card:nth-child(6) h3': 'Insights métier &amp; stratégie data',
+      '.services-grid .service-card:nth-child(6) p': "Transformer l'analyse en direction, avec une expérience de contribution aux roadmaps data et à la planification des projets analytiques.",
+
+      // Tools
+      '#tools .section-title': 'Outils &amp; <span class="grad-text">technologies.</span>',
+
+      // Education & events
+      '#education .kicker': 'Parcours',
+      '#education .section-title': 'Formation &amp; <span class="grad-text">événements professionnels.</span>',
+      '#education .edu-grid > div:first-child .edu-subhead': '🎓 Formation',
+      '#education .edu-grid > div:first-child .edu-card:nth-child(2) h3': "Diplôme d'Ingénieur en Data Science &amp; IoT",
+      '#education .edu-grid > div:first-child .edu-card:nth-child(3) .edu-school': 'Lycée Moulay Youssef · Filière intensive mathématiques &amp; physique',
+      '#education .edu-grid > div:first-child .edu-card:nth-child(4) h3': 'Baccalauréat International, Sciences Mathématiques',
+      '#education .edu-grid > div:last-child .edu-subhead': '🏛️ Événements professionnels',
+      '#education .edu-grid > div:last-child .event-card:nth-child(2) p': 'Systèmes de paiement et flux de transactions financières.',
+      '#education .edu-grid > div:last-child .event-card:nth-child(3) h3': 'Événement Mastercard',
+      '#education .edu-grid > div:last-child .event-card:nth-child(3) p': 'Détection de fraude et sécurité des transactions.',
+      '#education .edu-grid > div:last-child .event-card:nth-child(4) p': 'Solutions Big Data et architectures de traitement de données.',
+
+      // Contact & footer
+      '#contact .contact-wrap h2': 'Faisons de vos données <span class="grad-text">votre avantage.</span>',
+      '#contact .contact-wrap > p': "Je suis ouverte aux opportunités de Data Analyst, Data Engineer, Data Scientist, BI et Analytics Engineer, y compris à l'international et en remote. Recruteur ou entreprise avec un défi data ? Parlons-en.",
+      '#contact .contact-loc': '📍 Casablanca &amp; Rabat, Maroc · Disponible sur site, en hybride ou en remote',
+      'footer .footer-inner a[href="#home"]': 'Haut de page ↑'
+    };
+
+    const enCache = {};
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      for (const sel in FR) {
+        const el = document.querySelector(sel);
+        if (!el) continue;
+        if (!(sel in enCache)) enCache[sel] = el.innerHTML; // snapshot English once
+        el.innerHTML = (lang === 'fr') ? FR[sel] : enCache[sel];
+      }
+      // Headline: swap typed phrases, prefix and the invisible height sizer
+      typedPhrases = TYPED[lang];
+      document.getElementById('h1Prefix').textContent = H1_PREFIX[lang];
+      const longest = typedPhrases.reduce((a, b) => (b.length > a.length ? b : a));
+      document.getElementById('h1Sizer').textContent = H1_PREFIX[lang] + longest;
+      if (reduceMotion) typedEl.textContent = typedPhrases[0];
+    }
+
+    const langSwitch = document.getElementById('langSwitch');
+    function setLang(lang) {
+      langSwitch.querySelectorAll('button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      applyLang(lang);
+      try { localStorage.setItem('portfolio-lang', lang); } catch (e) { /* private mode */ }
+    }
+    langSwitch.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-lang]');
+      if (btn) setLang(btn.dataset.lang);
+    });
+    // Restore the visitor's last choice (English stays the default)
+    let savedLang = 'en';
+    try { savedLang = localStorage.getItem('portfolio-lang') || 'en'; } catch (e) { /* private mode */ }
+    if (savedLang === 'fr') setLang('fr');
+  </script>
+
+</body>
+</html>
